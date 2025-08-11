@@ -14,7 +14,7 @@ class Alumno {
         this.materias = materias;
     }
     //metodos
-    obetenerCarrera(){
+    obtenerCarrera(){
         return this.carrera;
     }
     obtenerDatos(nombre, apellido){
