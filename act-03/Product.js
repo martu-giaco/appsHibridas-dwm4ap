@@ -53,10 +53,15 @@ class Product{
     async updateProductById(id, product){
     this.products = await this.readJSON();
     const index = this.products.findIndex(item => item.id == id);
-    this.products[index].name = product.name;
-    this.products[index].description = product.description;
-    this.products[index].price = product.price;
-    this.products[index].stock = product.stock;
+    if (index > -1){
+        this.products[index].name = product.name;
+        this.products[index].description = product.description;
+        this.products[index].price = product.price;
+        this.products[index].stock = product.stock;
+        console.log('el producto fue editado exitosamente');
+    } else{
+        console.log('Producto no encontrado');
+    }
     console.log(index)
     this.saveJSON();
     }
