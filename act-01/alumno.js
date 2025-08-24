@@ -17,7 +17,7 @@ class Alumno {
     obtenerCarrera(){
         return this.carrera;
     }
-    obtenerDatos(nombre, apellido){
+    obtenerDatos(){
         return(this.nombre + this.apellido)
     }
     modificarEdad(edad){
