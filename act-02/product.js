@@ -1,37 +1,54 @@
-class Product {
+const fs = require('fs/promises');
+const path = './data/products.json';
+
+class Product{
     products = [];
-    
     constructor(products=[]){
-        this.products = products;
+        this.products = products
     }
-
-    //metodos
-    addProduct(products){
-        if(products.name === "" || products.desc === ""){
-            console.log("todos los campos son obligatorios");
-        }else if(isNaN(products.price) || isNaN(products.stock)){
-            console.log("el precio y el stock del producto deben ser numeros");
-        }else{
-            const id = crypto.randomUUID();
-            console.log("id: " + id);
-            this.products.push(products);
+    async saveJSON(){
+        try {
+            const data = JSON.stringify( this.products, null, 2);
+            await  fs.writeFile(path, data);
+        } catch (error) {
+            console.log('No se pudo guardar los datos')
         }
     }
-
-    getProducts(){
-        console.log('todos los productos:')
-        console.table(this.products)
-    }
-
-    getProductbyId(id){
-        let foundProduct = this.products.find(product => product.id === id);
-        
-        if(foundProduct == null){
-                console.log('el id que cargó no corresponde a ningún producto existente');
-        }else{
-            console.log('producto encontrado:')
-            console.table(foundProduct);
+    async readJSON(){
+        try {
+            const data = await fs.readFile(path);
+            const products = JSON.parse(data);
+            return products
+        } catch (error) {
+            console.error('No se pudo leer los datos');
+            return []
         }
+    }
+    addProduct(product){
+        // Validar datos!
+        const id = crypto.randomUUID();
+        product.id = id;
+        this.products.push(product);
+        this.saveJSON();
+    }
+    async getProducts(){
+        this.products = await this.readJSON();
+        return this.products
+    }
+    async getProductById(id){
+        this.products = await this.readJSON();
+        const product = this.products.find( item => item.id == id );
+        return product ? product : {};
+    }
+    async deleteProductById(id){
+    this.products = await this.readJSON();
+    const index = this.products.findIndex(product => product.id == id);
+    if (index !== -1) {
+        const deletedProduct = this.products.splice(index, 1)[0];
+        await this.saveJSON();
+        console.log('Producto eliminado: ' + deletedProduct.name);
+    } else {
+        console.log('Producto no encontrado');}
     }
 }
 
