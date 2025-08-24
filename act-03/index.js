@@ -1,8 +1,6 @@
 const Product = require('./Product');
 const model = new Product();
 
-
-console.log('Inicio de la Promesa');
 /* model.getProducts().then( lista => {
     console.table(lista);
 }) */
@@ -11,8 +9,7 @@ async function mostrar(){
     const lista = await model.getProducts();
     console.table(lista);
 }
-mostrar();
-console.log('Fin de la Promesa');
+//mostrar();
 
 async function buscar(id) {
     const product = await model.getProductById(id);
@@ -33,5 +30,14 @@ model.addProduct ( {
     price: 15000,
     stock: 20
 });  */
+
+//model.deleteProductById("40743f69-63c9-4ece-84b7-cd3a7f616b2f");
+
+model.updateProductById("35c37ec7-177b-47bf-a585-3e8b15ae9b96", {
+    name: 'Teclado trews',
+    description: 'Teclado Mecánico',
+    price: 30000,
+    stock: 25
+}); 
 
 mostrar();

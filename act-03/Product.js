@@ -40,6 +40,26 @@ class Product{
         const product = this.products.find( item => item.id == id );
         return product ? product : {};
     }
+    async deleteProductById(id){
+    this.products = await this.readJSON();
+    const index = this.products.findIndex(product => product.id == id);
+    if (index !== -1) {
+        const deletedProduct = this.products.splice(index, 1)[0];
+        this.saveJSON();
+        console.log('Producto eliminado: ' + deletedProduct.name);
+    } else {
+        console.log('Producto no encontrado');}
+    }
+    async updateProductById(id, product){
+    this.products = await this.readJSON();
+    const index = this.products.findIndex(item => item.id == id);
+    this.products[index].name = product.name;
+    this.products[index].description = product.description;
+    this.products[index].price = product.price;
+    this.products[index].stock = product.stock;
+    console.log(index)
+    this.saveJSON();
+    }
 }
 
 module.exports = Product;
