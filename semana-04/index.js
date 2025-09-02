@@ -8,7 +8,7 @@ mongoose.connect(urlDB);
 const db = mongoose.connection;
 
 db.on('error', () =>{console.error('error de conexión')});
-db.on('open', () =>{console.error('conoectó la db')});
+db.on('open', () =>{console.error('conectó la base de datooos woooo >0<')});
 
 
 const PORT = process.env.PORT;
