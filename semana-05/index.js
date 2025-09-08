@@ -4,7 +4,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 //const dotenv = require('dotenv');
 import dotenv from 'dotenv';
-import routerAPI from './routes/indexedDB.js';
+import routerAPI from './routes/index.js';
 
 dotenv.config();
 //conexiòn con la base de datos

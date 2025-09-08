@@ -1,5 +1,5 @@
-//const usuarioRouter = require('./usuarioRouter');
-import usuarioRouter from './usuarioRouter.js';
+//const usuarioRouter = require('./userRouter');
+import usuarioRouter from './userRouter.js';
 
 const routerAPI = (app) =>{
     app.use('/api/usuarios', usuarioRouter);

@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
-const schema = mongoose.schema;
+//const mongoose = require('mongoose');
+import mongoose from 'mongoose'
+
+const schema = mongoose.Schema;
 //creamos el esquema
 const miEsquema = new schema({
     nombre: String,
