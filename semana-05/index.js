@@ -19,9 +19,10 @@ db.on('open', () =>{console.error('conectó la base de datooos woooo >0<')});
 const PORT = process.env.PORT;
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
+app.use('/', )
 
-app.use('/', (request, response) =>{
+app.get('/', (request, response) =>{
     response.send('<h1> API REST </h1>')
 });
 

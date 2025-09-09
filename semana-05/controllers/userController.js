@@ -13,5 +13,36 @@ const listUsers = async (request, response) => {
     response.json(usuarios);
 }
 
+const getUserByID = async (request, response) =>{
+    const id = request.params.id;
+    const user = await User.findById(id);
+    if(user){
+        response.status(200).json({data, user});
+    }else{
+        response.status(200).json({msg:'usuario no encontrado'});
+    }
+}
+
+const updateUserByID = async (request, response) => {
+    const id = request.params.id;
+    const body = request.body;
+    const user = await User.findByIdAndUpdate(id, body);
+    if(user){
+        response.status(200).json({msg:'usuario borrado'});
+    }else{
+        response.status(200).json({msg:'usuario no encontrado'});
+    }
+}
+
+const deleteUserByID = async (request, response) => {
+    const id = request.params.id;
+    const user = await User.findByIdAndDelete(id);
+    if(user){
+        response.status(200).json({msg:'usuario borrado'});
+    }else{
+        response.status(200).json({msg:'usuario no encontrado'});
+    }
+}
+
 //modules.export = {newUser, listUsers}
-export{newUser, listUsers};
+export{newUser, listUsers, getUserByID, deleteUserByID, updateUserByID};
