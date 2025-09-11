@@ -13,14 +13,14 @@ mongoose.connect(urlDB);
 const db = mongoose.connection;
 
 db.on('error', () =>{console.error('error de conexión')});
-db.on('open', () =>{console.error('conectó la base de datooos woooo >0<')});
+db.on('open', () =>{console.log('conectó la base de datooos woooo >0<')});
 
 
 const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
-app.use('/', )
+app.use('/', express.static('public'))
 
 app.get('/', (request, response) =>{
     response.send('<h1> API REST </h1>')
