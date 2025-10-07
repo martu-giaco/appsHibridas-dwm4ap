@@ -6,11 +6,7 @@ import Titulo from './components/Titulo'
 
 function App() {
 
-  const imagenesGaleria = [
-    {imgURL:"vite.svg", nombre:"img1"},
-    {imgURL:"vite.svg", nombre:"img2"},
-    {imgURL:"vite.svg", nombre:"img3"},
-  ]
+
   return (
     <>
     <header>
