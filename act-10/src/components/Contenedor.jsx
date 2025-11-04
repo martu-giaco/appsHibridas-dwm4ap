@@ -1,8 +1,8 @@
-const Contenedor = ({props}) => {
+const Contenedor = (props) => {
 
     return(
         <div>{props.children}</div>
     )
 }
 
-export default Contenedor
+export default Contenedor;
