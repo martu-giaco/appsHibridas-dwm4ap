@@ -1,8 +1,11 @@
-const Galeria = ({imagenes}) => {
+const Galeria = ({ imagenes }) => {
+    return (
+        <div>
+            {imagenes.map((src, index) => (
+                <img key={index} src={src} alt={`Imagen ${index + 1}`} />
+            ))}
+        </div>
+    );
+};
 
-    return(
-        <img src={ imgURL } alt={ nombre } />
-    )
-}
-
-export default Galeria
+export default Galeria;

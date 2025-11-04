@@ -1,11 +1,12 @@
-import './App.css'
-import Card from './components/Card'
-import Galeria from './components/Galeria'
-import Logo from './components/Logo'
-import Titulo from './components/Titulo'
+import './App.css';
+import Card from './components/Card.jsx';
+import Galeria from './components/Galeria.jsx';
+import Logo from './components/Logo.jsx';
+import Titulo from './components/Titulo.jsx';
 
-function App() {
+const imgs = ['vite.svg', 'vite.svg', 'vite.svg', 'vite.svg', 'vite.svg'];
 
+const App = () => {
 
   return (
     <>
@@ -14,9 +15,12 @@ function App() {
       <Titulo nombre="Actividad 09"></Titulo>
     </header>
     <main>
+      <Titulo nombre="Creadores Destacados"></Titulo>
+      <Card nombre="Danisnotonfire" imagen="vite.svg" desc="test"></Card>
+      <Card nombre="AmazingPhil" imagen="vite.svg" desc="test"></Card>
+      <Card nombre="dsfdsf" imagen="vite.svg" desc="test"></Card>
       <Titulo nombre="Galería de Imágenes"></Titulo>
-      <Galeria></Galeria>
-      <Card nombre="Mar" imagen="vite.svg" desc="test"></Card>
+      <Galeria imagenes={imgs}></Galeria>
     </main>
     </>
   )
